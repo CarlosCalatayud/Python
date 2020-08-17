@@ -1,0 +1,8 @@
+def traspuesta(M):
+    ind = [0,4,8,12]
+    M_final = []
+    for k in range(len(ind)):
+        for i in ind:
+            print(i,k)
+            M_final.append(M[i+k])
+    return tuple(M_final)

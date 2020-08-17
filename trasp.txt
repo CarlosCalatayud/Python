@@ -1,0 +1,9 @@
+def traspuesta(M):
+    M_t = [M[0:4],M[4:8],M[8:12],M[12:]]
+    M_f = []
+    for i in range(4):
+        fila = []
+        for j in range(4):
+            fila.append(M_t[j][i])
+        M_f.append(fila)
+    return tuple(M_f[0]+M_f[1]+M_f[2]+M_f[3])

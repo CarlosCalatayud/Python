@@ -1,0 +1,12 @@
+def formatear(texto,ancho):
+    cadena_final = ''
+    if len(texto) < ancho:
+        return texto
+    num_frases = len(texto)//ancho
+    caracteres = len(texto) - num_frases*ancho
+    for i in range(num_frases):
+        if texto[ancho*(i+1)-1] == ' ':
+            cadena_final += texto[ancho*i:ancho*(i+1) -1] + '\n'
+        else:   cadena_final += texto[ancho*i:ancho*(i+1)] + '\n'
+    cadena_final += texto[len(texto)-caracteres:]
+    return cadena_final

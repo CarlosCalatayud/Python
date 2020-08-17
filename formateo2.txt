@@ -1,0 +1,13 @@
+def formatear(texto,ancho):
+    if len(texto) < ancho: return texto
+    frases = int(len(texto)/ancho)
+    lineas = [texto[i*ancho:(i+1)*ancho] for i in range(0,frases)]
+    lineas.append(texto[frases*ancho:])
+    for i in range(len(lineas)):
+        if lineas[i][-1]==' ':
+            print('cola')
+            lineas[i] = lineas[i][:ancho-1] + '\n'
+    solucion = ''
+    for i in lineas:
+        solucion +=i
+    return solucion

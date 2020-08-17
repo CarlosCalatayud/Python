@@ -1,0 +1,4 @@
+def traspuesta(M):
+    filas = [M[i:i+4] for i in range(0,13,4)]
+    sol = [filas[j][i] for i in range(4) for j in range(4)]
+    return tuple(sol)
