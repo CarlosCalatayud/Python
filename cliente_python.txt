@@ -1,0 +1,36 @@
+# no hace falta poner import serial,ya que mensaje ya lo tiene.
+from mensaje import *
+
+
+# PRIMERAMENTE DEFINO EL MENU, EL CUAL VA A DEVOLVER LA SECUENCIA DE LA
+# MISMA FORMA QUE EN LA PRACTICA 2.
+def menu():
+    print('Si desea salir introduzca un 0: ')
+    opc = input('introducir opcion')
+    N = input('introduzca numero de valores')
+    Vi = ''
+    for i in range(int(N)):
+        Vi+= input('introduzca valor:') + ';'
+
+
+    return opc + ':' + N + ':' + Vi[:len(Vi)-1]
+
+
+PuertoSerie = abrirPort('COM3')  # TENEMOS QUE PONER EL PUERTO AL QUE SE CONECTE EL NODE.
+
+n = -1
+while n != 0:
+    orden = menu() + '\n'
+
+    print('mensaje: ' + orden)
+
+    if orden[0] != '0':
+        sendMensaje(PuertoSerie, orden)
+        print('esperando respuesta.......')
+        respuesta = receiveMensaje(PuertoSerie)
+        print('EL VALOR mas repetido es: ', respuesta)
+    else:
+        PuertoSerie.close()
+        n = 0  # el break lo utilizo para salir del bucle
+
+print('Fin comunicacion')
